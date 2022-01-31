@@ -1,3 +1,4 @@
+--Parte 1
 create database posts;
 
 create table post(
@@ -27,3 +28,13 @@ insert into post (nombre_usuario, contenido, descripcion, titulo) values ('Pedro
 DELETE FROM post WHERE nombre_usuario='Carlos';
 
 insert into post (nombre_usuario, contenido, descripcion, titulo) values ('Carlos', 'Clases de Piano', 'Desde el Jueves a las 17:00 horas', 'Aprende Piano');
+
+--Parte 2
+create table comentarios (
+    id serial,
+    fecha date,
+    hora_creacion timestamp default now(),
+    contenido text(255),
+    PRIMARY KEY (id),
+    FOREIGN KEY (contenido) REFERENCES post (id)
+);
